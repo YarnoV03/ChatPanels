@@ -3,20 +3,15 @@ package be.yarno.chatpanels.model;
 import java.time.LocalTime;
 
 public class ChatMessage {
-  private final String sender;
+
   private final String message;
   private final LocalTime timestamp;
-  private final MessageType type;
+  private final String sender;
 
-  public ChatMessage(String sender, String message, MessageType type) {
-    this.sender = sender;
+  public ChatMessage(String message, String sender) {
     this.message = message;
     this.timestamp = LocalTime.now();
-    this.type = type;
-  }
-
-  public String getSender() {
-    return sender;
+    this.sender = sender;
   }
 
   public String getMessage() {
@@ -27,7 +22,7 @@ public class ChatMessage {
     return timestamp;
   }
 
-  public MessageType getType() {
-    return type;
+  public String getSender() {
+    return sender;
   }
 }
