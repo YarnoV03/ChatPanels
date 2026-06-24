@@ -1,4 +1,4 @@
-package org.example.core;
+package be.yarno.chatpanels;
 
 import net.labymod.api.addon.AddonConfig;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SwitchWidget.SwitchSetting;
