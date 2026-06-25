@@ -3,6 +3,7 @@ package be.yarno.chatpanels.manager;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import be.yarno.chatpanels.model.ChatMessage;
 import be.yarno.chatpanels.panel.ChatPanel;
 
 public class ChatPanelManager {
@@ -31,6 +32,16 @@ public class ChatPanelManager {
 
     if (!panels.remove(panel)) {
       throw new IllegalArgumentException("Panel not found");
+    }
+  }
+
+  public void handleMessage(ChatMessage message) {
+    if (message == null) {
+      throw new IllegalArgumentException();
+    }
+
+    for(ChatPanel panel : panels) {
+      panel.handleMessage(message);
     }
   }
 }
