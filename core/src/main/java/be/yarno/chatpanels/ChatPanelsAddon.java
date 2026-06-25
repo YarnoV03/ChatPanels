@@ -18,6 +18,8 @@ public class ChatPanelsAddon extends LabyAddon<ChatPanelConfiguration> {
     panelManager = new ChatPanelManager();
     messageListener = new ChatMessageListener(panelManager);
 
+    this.registerListener(messageListener);
+
     System.out.println("ChatPanels manager loaded!");
   }
 

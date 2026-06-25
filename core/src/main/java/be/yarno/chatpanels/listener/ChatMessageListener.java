@@ -1,7 +1,8 @@
 package be.yarno.chatpanels.listener;
 
 import be.yarno.chatpanels.manager.ChatPanelManager;
-import be.yarno.chatpanels.model.ChatMessage;
+import net.labymod.api.event.Subscribe;
+import net.labymod.api.event.client.chat.ChatReceiveEvent;
 
 public class ChatMessageListener {
 
@@ -11,11 +12,8 @@ public class ChatMessageListener {
     this.panelManager = panelManager;
   }
 
-  public void handleMessage(ChatMessage message) {
-    if (message == null) {
-      throw new IllegalArgumentException();
-    }
-
-    panelManager.handleMessage(message);
+  @Subscribe
+  public void onChatReceive(ChatReceiveEvent event) {
+    System.out.println("Received chat: " + event.message());
   }
 }
