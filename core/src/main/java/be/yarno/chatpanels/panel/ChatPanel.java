@@ -1,6 +1,7 @@
 package be.yarno.chatpanels.panel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import be.yarno.chatpanels.model.ChatFilter;
 import be.yarno.chatpanels.model.ChatMessage;
@@ -19,6 +20,14 @@ public class ChatPanel {
 
   public String getPanelName() {
     return panelName;
+  }
+
+  public List<ChatFilter> getFilters() {
+    return Collections.unmodifiableList(filters);
+  }
+
+  public ChatHistory getHistory() {
+    return history;
   }
 
   public void rename(String newPanelName) {
