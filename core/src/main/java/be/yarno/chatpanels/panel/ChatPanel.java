@@ -30,9 +30,12 @@ public class ChatPanel {
   }
 
   public void handleMessage(ChatMessage message) {
+    if (message == null) {
+      throw new IllegalArgumentException();
+    }
+
     if (filters.isEmpty()) {
       history.addMessage(message);
-
       return;
     }
 
