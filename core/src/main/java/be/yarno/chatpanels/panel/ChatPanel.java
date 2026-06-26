@@ -6,16 +6,28 @@ import java.util.List;
 import be.yarno.chatpanels.model.ChatFilter;
 import be.yarno.chatpanels.model.ChatMessage;
 import be.yarno.chatpanels.model.MessageLimit;
+import be.yarno.chatpanels.model.PanelBounds;
 
 public class ChatPanel {
+
   private String panelName;
   private final ChatHistory history;
   private final List<ChatFilter> filters;
+  private final PanelBounds bounds;
 
-  public ChatPanel(String panelName, MessageLimit limit) {
+  public ChatPanel(
+      String panelName,
+      MessageLimit limit,
+      PanelBounds bounds
+  ) {
+    if (bounds == null) {
+      throw new IllegalArgumentException();
+    }
+
     this.panelName = panelName;
     this.history = new ChatHistory(limit);
     this.filters = new ArrayList<>();
+    this.bounds = bounds;
   }
 
   public String getPanelName() {
@@ -28,6 +40,10 @@ public class ChatPanel {
 
   public ChatHistory getHistory() {
     return history;
+  }
+
+  public PanelBounds getBounds() {
+    return bounds;
   }
 
   public void rename(String newPanelName) {
@@ -45,7 +61,6 @@ public class ChatPanel {
 
     if (filters.isEmpty()) {
       history.addMessage(message);
-
       return;
     }
 
