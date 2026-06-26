@@ -1,4 +1,4 @@
-package be.yarno.chatpanels.model;
+package be.yarno.chatpanels.panel;
 
 public class PanelBounds {
 

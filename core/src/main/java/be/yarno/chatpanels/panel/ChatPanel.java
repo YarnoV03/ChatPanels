@@ -6,7 +6,6 @@ import java.util.List;
 import be.yarno.chatpanels.model.ChatFilter;
 import be.yarno.chatpanels.model.ChatMessage;
 import be.yarno.chatpanels.model.MessageLimit;
-import be.yarno.chatpanels.model.PanelBounds;
 
 public class ChatPanel {
 
