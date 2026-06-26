@@ -36,11 +36,7 @@ public class ChatPanelManager {
   }
 
   public void handleMessage(ChatMessage message) {
-    if (message == null) {
-      throw new IllegalArgumentException();
-    }
-
-    for(ChatPanel panel : panels) {
+    for (ChatPanel panel : panels) {
       panel.handleMessage(message);
     }
   }

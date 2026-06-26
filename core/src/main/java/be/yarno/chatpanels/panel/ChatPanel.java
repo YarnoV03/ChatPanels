@@ -45,6 +45,7 @@ public class ChatPanel {
 
     if (filters.isEmpty()) {
       history.addMessage(message);
+
       return;
     }
 
