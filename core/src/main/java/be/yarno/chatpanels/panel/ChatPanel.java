@@ -1,7 +1,6 @@
 package be.yarno.chatpanels.panel;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import be.yarno.chatpanels.model.ChatFilter;
 import be.yarno.chatpanels.model.ChatMessage;
@@ -14,15 +13,10 @@ public class ChatPanel {
   private final List<ChatFilter> filters;
   private final PanelBounds bounds;
 
-  public ChatPanel(
-      String panelName,
-      MessageLimit limit,
-      PanelBounds bounds
-  ) {
+  public ChatPanel(String panelName, MessageLimit limit, PanelBounds bounds) {
     if (bounds == null) {
       throw new IllegalArgumentException();
     }
-
     this.panelName = panelName;
     this.history = new ChatHistory(limit);
     this.filters = new ArrayList<>();
@@ -34,7 +28,7 @@ public class ChatPanel {
   }
 
   public List<ChatFilter> getFilters() {
-    return Collections.unmodifiableList(filters);
+    return this.filters;
   }
 
   public ChatHistory getHistory() {
@@ -49,7 +43,6 @@ public class ChatPanel {
     if (newPanelName == null || newPanelName.isBlank()) {
       throw new IllegalArgumentException();
     }
-
     panelName = newPanelName;
   }
 
@@ -75,7 +68,6 @@ public class ChatPanel {
     if (filter == null) {
       throw new IllegalArgumentException();
     }
-
     filters.add(filter);
   }
 
@@ -83,9 +75,6 @@ public class ChatPanel {
     if (filter == null) {
       throw new IllegalArgumentException();
     }
-
-    if (!filters.remove(filter)) {
-      throw new IllegalArgumentException("Filter not found");
-    }
+    filters.remove(filter);
   }
 }

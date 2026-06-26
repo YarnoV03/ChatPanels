@@ -1,7 +1,9 @@
 package be.yarno.chatpanels;
 
+import be.yarno.chatpanels.listener.ChatKeyBindListener;
 import be.yarno.chatpanels.listener.ChatMessageListener;
 import be.yarno.chatpanels.manager.ChatPanelManager;
+import be.yarno.chatpanels.panel.ChatPanelRenderer;
 import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.models.addon.annotation.AddonMain;
 
@@ -9,18 +11,24 @@ import net.labymod.api.models.addon.annotation.AddonMain;
 public class ChatPanelsAddon extends LabyAddon<ChatPanelConfiguration> {
 
   private ChatPanelManager panelManager;
+  private ChatPanelRenderer panelRenderer;
   private ChatMessageListener messageListener;
+  private ChatKeyBindListener keyBindListener;
 
   @Override
   protected void enable() {
     this.registerSettingCategory();
 
-    panelManager = new ChatPanelManager();
-    messageListener = new ChatMessageListener(panelManager);
+    this.panelManager = new ChatPanelManager();
+    this.panelRenderer = new ChatPanelRenderer(this.panelManager);
 
-    this.registerListener(messageListener);
+    this.messageListener = new ChatMessageListener(this.panelManager);
+    this.keyBindListener = new ChatKeyBindListener(this.panelManager, this.panelRenderer);
 
-    System.out.println("ChatPanels manager loaded!");
+    this.registerListener(this.messageListener);
+    this.registerListener(this.keyBindListener);
+
+    System.out.println("ChatPanels manager and HUD Renderer loaded successfully!");
   }
 
   public ChatPanelManager getPanelManager() {

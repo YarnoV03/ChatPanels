@@ -35,17 +35,19 @@ public class PanelBounds {
     return height;
   }
 
-  public void setPosition(int x, int y) {
+  public void setX(int x) {
     this.x = x;
+  }
+
+  public void setY(int y) {
     this.y = y;
   }
 
-  public void setSize(int width, int height) {
-    if (width <= 0 || height <= 0) {
-      throw new IllegalArgumentException("Width and height must be greater than 0.");
-    }
-
+  public void setWidth(int width) {
     this.width = width;
+  }
+
+  public void setHeight(int height) {
     this.height = height;
   }
 }
